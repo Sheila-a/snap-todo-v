@@ -4,11 +4,13 @@
     :class="{ 'bg-white bg-opacity-15': todo.completed }"
     role="button"
     tabindex="0"
-    @click="onClick"
-    @keydown.enter="onClick"
     :aria-label="`Todo: ${todo.title}`"
   >
-    <div class="flex items-center gap-3">
+    <div
+      class="flex items-center gap-3"
+      @click="onClick"
+      @keydown.enter="onClick"
+    >
       <component
         :is="todo.completed ? CheckCircle : Circle"
         :class="todo.completed ? 'text-green-500' : 'text-gray-400'"

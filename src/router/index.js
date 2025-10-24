@@ -3,7 +3,7 @@ import TodosPage from "@/views/TodosPage.vue";
 import TodosDetailPage from "@/views/TodosDetailPage.vue";
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.VITE_BASE_URL),
+  history: createWebHistory("/"),
   routes: [
     { path: "/", name: "Home", component: TodosPage },
     {

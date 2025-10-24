@@ -21,9 +21,16 @@ import {
 } from "@/components/ui/select";
 import { ref, watch } from "vue";
 
-const props = defineProps<{ value: string }>();
-const emit = defineEmits(["update:value"]);
+const props = defineProps<{ modelValue: string }>();
+const emit = defineEmits(["update:modelValue"]);
 
-const selected = ref(props.value);
-watch(selected, (val) => emit("update:value", val));
+const selected = ref(props.modelValue);
+
+watch(
+  () => props.modelValue,
+  (val) => (selected.value = val)
+);
+
+// Emit on change
+watch(selected, (val) => emit("update:modelValue", val));
 </script>

@@ -2,7 +2,7 @@
   <header class="top-0 fixed w-full z-50 shadow-lg">
     <nav class="flex bg-white items-center px-[7vw] py-5 justify-between">
       <div class="flex items-center gap-2 w-full">
-        <RouterLink to="/todos">
+        <RouterLink to="/">
           <h1 class="text-4xl">SNAP TODO</h1>
         </RouterLink>
       </div>
@@ -35,11 +35,19 @@ import { RouterLink } from "vue-router";
 import SearchBar from "./SearchBar.vue";
 import { Menu as MenuIcon, X as XIcon } from "lucide-vue-next";
 
-const props = defineProps<{ value?: string }>();
-const emit = defineEmits(["update:value"]);
+const props = defineProps<{ modelValue?: string }>();
+const emit = defineEmits(["update:modelValue"]);
 
-const search = ref(props.value || "");
-watch(search, (v) => emit("update:value", v));
+const search = ref(props.modelValue || "");
+
+// sync with parent prop
+watch(
+  () => props.modelValue,
+  (v) => (search.value = v)
+);
+
+// emit when local value changes
+watch(search, (v) => emit("update:modelValue", v));
 
 const isOpen = ref(false);
 const toggleMenu = () => (isOpen.value = !isOpen.value);

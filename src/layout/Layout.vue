@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navbar :value="value" @change="onChange" />
+    <Navbar v-model="internalValue" />
     <div class="bg-[#071847] mbg-[#030B1A] pb-14">
       <slot />
     </div>
@@ -8,17 +8,25 @@
 </template>
 
 <script setup>
+import { ref, watch } from "vue";
 import Navbar from "../components/Navbar.vue";
 
-// Props
-defineProps({
-  value: {
+const props = defineProps({
+  modelValue: {
     type: String,
     default: "",
   },
-  onChange: {
-    type: Function,
-    required: true,
-  },
 });
+const emit = defineEmits(["update:modelValue"]);
+
+const internalValue = ref(props.modelValue);
+
+// keep synced with parent
+watch(
+  () => props.modelValue,
+  (v) => (internalValue.value = v)
+);
+
+// emit updates
+watch(internalValue, (v) => emit("update:modelValue", v));
 </script>

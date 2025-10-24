@@ -71,7 +71,6 @@ async function onSubmit() {
 
   const toastId = toast.loading("Updating Todo...");
   try {
-    // For jsonplaceholder, update endpoint exists; for local longer ids logic can be placed in store if needed
     await store.dispatch("updateTodo", {
       id: props.todo.id,
       payload: { ...props.todo, title: payload.title },
