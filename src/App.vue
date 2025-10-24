@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 </script>
@@ -43,5 +43,19 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
+}
+</style> -->
+<template>
+  <router-view />
+</template>
+
+<script setup lang="ts"></script>
+
+<style>
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #071847;
+  margin: 0;
+  padding: 0;
 }
 </style>
