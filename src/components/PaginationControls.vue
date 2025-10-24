@@ -1,21 +1,23 @@
 <template>
   <div class="flex justify-end mt-10 gap-4">
     <Button
+      class="border-white"
       :disabled="currentPage === 1"
       @click="handlePrevious"
       variant="outline"
     >
-      <ChevronLeft />
+      <ChevronLeft color="#fff" />
     </Button>
     <span class="text-sm mt-2 text-white"
       >Page {{ currentPage }} of {{ totalPages }}</span
     >
     <Button
+      class="border-white"
       :disabled="currentPage === totalPages"
       @click="handleNext"
       variant="outline"
     >
-      <ChevronRight />
+      <ChevronRight color="#fff" />
     </Button>
   </div>
 </template>

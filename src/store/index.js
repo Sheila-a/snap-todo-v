@@ -31,6 +31,8 @@ export default createStore({
       commit("setError", null);
       try {
         const data = await getTodods();
+        console.log(data);
+
         commit("setTodos", data);
       } catch (err) {
         commit("setError", err.message || "Failed to load todos");
